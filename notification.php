@@ -17,6 +17,7 @@ include './sidemenu.php';
         <br><br><br>
         <h3>Context: <textarea name="comment" rows="5" cols="40" required></textarea></h3>
         <br><br><br>
+        <h3>Select an attachment: <input type="file" name="myfile"></h3><br><br>
         <input type="submit" name="submit" value="submit">
     </div> 
 </form>

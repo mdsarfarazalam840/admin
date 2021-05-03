@@ -13,8 +13,8 @@ $dob = $_POST["dob"];
 // echo $uname;
 // $pass = $_POST["pass"];
 $query = "insert into student_registration (Name , regd, email, phone, program, branch, password, gender, dob) values ('$name', '$regdno', '$emailid','$phone', '$program', '$branch', '$pass', '$gender', '$dob')";
-echo $query;
-die();
+// echo $query;
+// die();
 mysqli_query($conn,$query);
 
     header("location:student.php");
