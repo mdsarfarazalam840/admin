@@ -156,7 +156,7 @@ if ($result = mysqli_query($conn, $query)) {
 		<td style="text-align: center;"><?php echo $count;?></td>
 		<td style="text-align: center;"><?php echo $row[1];?></td>
 		<td style="text-align: center;"><?php echo $row[2];?></td>
-		<td style="text-align: center;">delete/Edit</td>
+		<td style="text-align: center;"><a href="bdelete.php?id='<?php echo $row[0];?>'"> delete</a>/Edit</td>
 	</tr>
 
     <?php
