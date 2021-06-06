@@ -17,7 +17,6 @@ include 'dbcon.php';
   margin-top: 160px
 }
 	</style>
-
 <!-- Popup window-->
 	<style>	
 .popup .overlay {
@@ -108,15 +107,15 @@ include 'dbcon.php';
 </style>
 </head>
 <body>
-<form name='addbranch' action='add_branch.php' method='post'>
+<form name='addsemester' action='add_semester.php' method='post'>
 	<div class="popup" id="popup-1">
   <div class="overlay"></div>
   <div class="content">
     <div class="close-btn" onclick="togglePopup()">&times;</div>
-    <h1>Add New Branch</h1>
+    <h1>Add New Semester</h1>
     <div class="data">
-    	<label>Branch Name</label>
-    	<input type="text" name="bname" required>
+    	<label>Semester Name</label>
+    	<input type="text" name="semname" required>
     </div>
     <div>
 <input type="submit" value='Save' class="button button2" style="width: 90px">
@@ -136,18 +135,18 @@ include 'dbcon.php';
 
 </head>
 <body>
-<h1 style="margin-left:200px; margin-top:20px;" >BRANCH</h1>
+<h1 style="margin-left:200px; margin-top:20px;" >SEMESTER</h1>
 
-<table border="7" cellpadding="15" style="width:70%;" class="center">
+<table border="7" cellpadding="15" style="width:70%" class="center">
 	<tr>
 		<th>Sr.No</th>
-		<th>Branch Name</th>
+		<th>Semester Name</th>
 		<th>Status</th>
 		<th>Action</th>
 	</tr>
-
+    
 <?php 
-$query="select * from branch";
+$query="select * from semester";
 
 if ($result = mysqli_query($conn, $query)) {
   $count=1;
@@ -158,7 +157,7 @@ if ($result = mysqli_query($conn, $query)) {
 		<td style="text-align: center;"><?php echo $count;?></td>
 		<td style="text-align: center;"><?php echo $row[1];?></td>
 		<td style="text-align: center;"><?php echo $row[2];?></td>
-		<td style="text-align: center;"><a href="bdelete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
+		<td style="text-align: center;"><a href="semdelete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
 	</tr>
 
     <?php
@@ -167,8 +166,6 @@ if ($result = mysqli_query($conn, $query)) {
   
 }
 ?>
-
-</table>
 
 </body>
 </html>

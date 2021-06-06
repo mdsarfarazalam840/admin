@@ -7,6 +7,8 @@ include 'dbcon.php';
 <!DOCTYPE html>
 <html>
 <head>
+<!--link-->
+<link rel="stylesheet" href="css/all.min.css">
 <!-- Table-->
 	<style type="text/css">
 	 table.center {
@@ -146,8 +148,8 @@ include 'dbcon.php';
  <tr>
  <td>Mobile Number</td>
  <td>
- <input type="text" name="phone" maxlength="10" required/>
- (10 digit number)
+ <input type="text" name="phone" maxlength="12" required/>
+ (12 digit number)
  </td>
  </tr>
  
@@ -279,7 +281,7 @@ if ($result = mysqli_query($conn, $query)) {
     <td style="text-align: center;"><?php echo $row[7];?></td>
     <td style="text-align: center;"><?php echo $row[8];?></td>
     <td style="text-align: center;"><?php echo $row[9];?></td>
-    <td style="text-align: center;"><a href="studentdelete.php?id='<?php echo $row[0];?>'"> delete</a>/Edit</td>
+    <td style="text-align: center;"><a href="studentdelete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
 		
 	</tr>
 

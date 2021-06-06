@@ -7,6 +7,8 @@ include 'dbcon.php';
 <!DOCTYPE html>
 <html>
 <head>
+<!--link-->
+<link rel="stylesheet" href="css/all.min.css">
 <!-- Table-->
 	<style type="text/css">
 	 table.center {
@@ -165,17 +167,53 @@ include 'dbcon.php';
   
  <!----- Designation ---------------------------------------------------------->
  <tr>
- <td>Designation</td>
- <td><input type="text" name="designation" maxlength="30" required/>
- </td>
- </tr>
+      <td>Designation</td>
+      <td><select name="designation" id="">
+      <?php 
+        $query="select * from designation";
+
+        if ($result = mysqli_query($conn, $query)) {
+          
+          while ($row = mysqli_fetch_row($result)) {
+            
+            ?>
+            <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+       
+
+            <?php
+            
+          }
+          
+        }
+        ?>
+      </select>
+      </td>
+      </tr>
   
  <!----- Subject Teaching ---------------------------------------------------------->
  <tr>
- <td>Subject Teaching</td>
- <td><input type="text" name="subteacher" maxlength="6" required/>
- </td>
- </tr>
+      <td>Subject Teaching</td>
+      <td><select name="subject" id="">
+      <?php 
+        $query="select * from subject";
+
+        if ($result = mysqli_query($conn, $query)) {
+          
+          while ($row = mysqli_fetch_row($result)) {
+            
+            ?>
+            <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+       
+
+            <?php
+            
+          }
+          
+        }
+        ?>
+      </select>
+      </td>
+      </tr>
   
  <!----- Password ---------------------------------------------------------->
  <tr>
@@ -243,7 +281,7 @@ if ($result = mysqli_query($conn, $query)) {
     <td style="text-align: center;"><?php echo $row[7];?></td>
     <td style="text-align: center;"><?php echo $row[8];?></td>
     <td style="text-align: center;"><?php echo $row[9];?></td>
-    <td style="text-align: center;"><a href="facultydelete.php?id='<?php echo $row[0];?>'"> delete</a>/Edit</td>
+    <td style="text-align: center;"><a href="facultydelete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
 		
 	</tr>
 
