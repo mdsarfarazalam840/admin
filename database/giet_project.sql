@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 09:28 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Generation Time: Jun 08, 2021 at 04:25 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -55,6 +54,35 @@ CREATE TABLE `branch` (
   `action` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`sr`, `branchname`, `status`, `action`) VALUES
+(7, 'CSE', 'OK', 'active'),
+(8, 'Civil', 'OK', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `designation`
+--
+
+CREATE TABLE `designation` (
+  `sr` int(200) NOT NULL,
+  `designation` varchar(50) NOT NULL,
+  `status` varchar(12) NOT NULL,
+  `action` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `designation`
+--
+
+INSERT INTO `designation` (`sr`, `designation`, `status`, `action`) VALUES
+(2, 'HOD', 'OK', 'active'),
+(3, 'VC', 'OK', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +102,13 @@ CREATE TABLE `faculty_registration` (
   `dob` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `faculty_registration`
+--
+
+INSERT INTO `faculty_registration` (`sr`, `empname`, `empid`, `pass`, `email`, `phone`, `designation`, `teaching`, `gender`, `dob`) VALUES
+(12, 'Parmananda', 485421312, 'vicky1234-', 'parmananda@gmail.com', '7894565231', 'HOD', 'Java', 'Male', '2021-06-09');
+
 -- --------------------------------------------------------
 
 --
@@ -83,7 +118,8 @@ CREATE TABLE `faculty_registration` (
 CREATE TABLE `notification` (
   `Sr. no` int(30) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `context` varchar(200) NOT NULL
+  `context` varchar(200) NOT NULL,
+  `attachment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -99,6 +135,14 @@ CREATE TABLE `program` (
   `action` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `program`
+--
+
+INSERT INTO `program` (`sr`, `programname`, `status`, `action`) VALUES
+(19, 'B.Tech', 'OK', 'active'),
+(20, 'M.Tech', 'OK', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +156,15 @@ CREATE TABLE `section` (
   `action` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`sr`, `section`, `status`, `action`) VALUES
+(3, 'A', 'OK', 'active'),
+(4, 'B', 'OK', 'active'),
+(5, 'C', 'OK', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -119,11 +172,18 @@ CREATE TABLE `section` (
 --
 
 CREATE TABLE `semester` (
-  `sr` int(11) NOT NULL,
-  `semester` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `action` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `sr` int(20) NOT NULL,
+  `semester` varchar(20) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `action` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`sr`, `semester`, `status`, `action`) VALUES
+(2, '1st', 'OK', 'active');
 
 -- --------------------------------------------------------
 
@@ -138,6 +198,14 @@ CREATE TABLE `session` (
   `action` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `session`
+--
+
+INSERT INTO `session` (`sr`, `year`, `status`, `action`) VALUES
+(5, '2017-2021', 'OK', 'active'),
+(6, '2018-2022', 'OK', 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -149,13 +217,21 @@ CREATE TABLE `student_registration` (
   `Name` varchar(50) NOT NULL,
   `regd` int(12) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` int(12) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `program` varchar(20) NOT NULL,
   `branch` varchar(50) NOT NULL,
   `password` varchar(25) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `dob` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_registration`
+--
+
+INSERT INTO `student_registration` (`sr`, `Name`, `regd`, `email`, `phone`, `program`, `branch`, `password`, `gender`, `dob`) VALUES
+(14, 'Md Sarfaraz Sarfaraz Alam', 1701326068, 'md.sarfarazalam840@gmail.com', '07717795540', 'Computer', 'CSE', 'hello123-', 'Male', '2021-06-01'),
+(15, 'Parmananda', 1701326098, 'parmananda@gmail.com', '7849152648', 'B.Tech', 'CSE', 'vicky123', 'Male', '2021-06-02');
 
 -- --------------------------------------------------------
 
@@ -168,6 +244,28 @@ CREATE TABLE `subject` (
   `subject` varchar(50) NOT NULL,
   `status` varchar(12) NOT NULL,
   `action` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`sr`, `subject`, `status`, `action`) VALUES
+(3, 'Software Engineering', 'OK', 'active'),
+(4, 'Java', 'OK', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `sr` int(11) NOT NULL,
+  `program` varchar(50) NOT NULL,
+  `branch` varchar(50) NOT NULL,
+  `semester` varchar(50) NOT NULL,
+  `attachment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -184,6 +282,12 @@ ALTER TABLE `adminlogin`
 -- Indexes for table `branch`
 --
 ALTER TABLE `branch`
+  ADD PRIMARY KEY (`sr`);
+
+--
+-- Indexes for table `designation`
+--
+ALTER TABLE `designation`
   ADD PRIMARY KEY (`sr`);
 
 --
@@ -235,6 +339,12 @@ ALTER TABLE `subject`
   ADD PRIMARY KEY (`sr`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`sr`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -248,55 +358,67 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `designation`
+--
+ALTER TABLE `designation`
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `faculty_registration`
 --
 ALTER TABLE `faculty_registration`
-  MODIFY `sr` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `sr` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `Sr. no` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `Sr. no` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `sr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sr` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student_registration`
 --
 ALTER TABLE `student_registration`
-  MODIFY `sr` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sr` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sr` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `sr` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
