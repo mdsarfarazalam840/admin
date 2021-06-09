@@ -38,8 +38,8 @@ include 'dbcon.php';
   left:50%;
   transform:translate(-50%,-50%) scale(0);
   background:#fff;
-  width:500px;
-  height:550px;
+  width:270px;
+  height:200px;
   z-index:2;
   text-align:center;
   padding:20px;
@@ -70,6 +70,7 @@ include 'dbcon.php';
 .popup.active .content {
   transition:all 300ms ease-in-out;
   transform:translate(-50%,-50%) scale(1);
+  
 }
 	</style>
 
@@ -117,19 +118,97 @@ include 'dbcon.php';
     <div class="close-btn" onclick="togglePopup()">&times;</div>
     <h1>Time Table</h1>
     <div class="data">
-    <h3 style="text-align:center; margin-top:150px">Program &nbsp;
-         <input style="height:30px;" type="text" name="program" size="30" required>
-         </h3>
-         <h3 style="text-align:center; margin-top:50px">Branch &nbsp;
-         <input style="height:30px;" type="text" name="branch" size="30">
-         </h3>
-         <h3 style="text-align:center; margin-top:50px">Semester &nbsp;
-         <input style="height:30px;" type="text" name="semester" size="30">
-         </h3>
-         <h3 style="text-align:center; margin-top:50px">Select an attachment: <input type="file" name="myfile"></h3><br><br>
 
-          <div style="text-align:center; margin-top:20px">
-          <input type="submit" name="submit" value="submit">
+    <table align="center" cellpadding = "1000">
+    <!----- Program ---------------------------------------------------------->
+
+    <tr>
+      <td>Program</td>
+      <td><select name="program" id="">
+      <?php 
+        $query="select * from program";
+
+        if ($result = mysqli_query($conn, $query)) {
+          
+          while ($row = mysqli_fetch_row($result)) {
+            
+            ?>
+            <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+       
+
+            <?php
+            
+          }
+          
+        }
+        ?>
+      </select>
+      </td>
+      </tr>
+
+    <!----- Branch ---------------------------------------------------------->
+
+    <tr>
+      <td>Branch</td>
+      <td><select name="branch" id="">
+      <?php 
+        $query="select * from branch";
+
+        if ($result = mysqli_query($conn, $query)) {
+          
+          while ($row = mysqli_fetch_row($result)) {
+            
+            ?>
+            <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+       
+
+            <?php
+            
+          }
+          
+        }
+        ?>
+      </select>
+      </td>
+      </tr>
+
+
+    <!----- Semester ---------------------------------------------------------->
+
+    <tr>
+      <td>Semester</td>
+      <td><select name="semester" id="">
+      <?php 
+        $query="select * from semester";
+
+        if ($result = mysqli_query($conn, $query)) {
+          
+          while ($row = mysqli_fetch_row($result)) {
+            
+            ?>
+            <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+       
+
+            <?php
+            
+          }
+          
+        }
+        ?>
+      </select>
+      </td>
+      </tr>
+
+     <!----- Submit and Reset ------------------------------------------------->
+    <tr>
+    <td colspan="2" align="center">
+    <input type="submit" value="Save">
+    <input type="reset" value="Reset">
+    </td>
+    </tr>
+
+    </table>
+
     </div>
     <div>
 
