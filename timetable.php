@@ -110,7 +110,7 @@ include 'dbcon.php';
 </style>
 </head>
 <body>
-<form name='#' action='#' method='post'>
+<form name='addtimetable' action='add_timetable.php' method='post'>
 	<div class="popup" id="popup-1">
   <div class="overlay"></div>
   <div class="content">
@@ -121,15 +121,15 @@ include 'dbcon.php';
          <input style="height:30px;" type="text" name="program" size="30" required>
          </h3>
          <h3 style="text-align:center; margin-top:50px">Branch &nbsp;
-         <input style="height:30px;" type="text" name="program" size="30">
+         <input style="height:30px;" type="text" name="branch" size="30">
          </h3>
          <h3 style="text-align:center; margin-top:50px">Semester &nbsp;
-         <input style="height:30px;" type="text" name="program" size="30">
+         <input style="height:30px;" type="text" name="semester" size="30">
          </h3>
          <h3 style="text-align:center; margin-top:50px">Select an attachment: <input type="file" name="myfile"></h3><br><br>
 
           <div style="text-align:center; margin-top:20px">
-          <input type="submit" name="submit">
+          <input type="submit" name="submit" value="submit">
     </div>
     <div>
 
@@ -149,7 +149,37 @@ include 'dbcon.php';
 <h1 style="margin-left:200px; margin-top:20px;" >TIME TABLE</h1>
 
 
+<table border="7" cellpadding="15" style="width:70%" class="center">
+	<tr>
+		<th>Sr.No</th>
+		<th>Program</th>
+		<th>Branch</th>
+		<th>Semester</th>
+		<th>Status</th>
+		<th>Action</th>
+	</tr>
+  <?php 
+$query="select * from timetable";
 
+if ($result = mysqli_query($conn, $query)) {
+  $count=1;
+  while ($row = mysqli_fetch_row($result)) {
+    
+    ?>
+<tr>
+		<td style="text-align: center;"><?php echo $count;?></td>
+		<td style="text-align: center;"><?php echo $row[1];?></td>
+		<td style="text-align: center;"><?php echo $row[2];?></td>
+		<td style="text-align: center;"><?php echo $row[3];?></td>
+		<td style="text-align: center;"><?php echo $row[4];?></td>
+		<td style="text-align: center;"><a href="time_delete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
+	</tr>
+  <?php
+    $count= $count+1;
+  }
+  
+}
+?>
 
 
 	

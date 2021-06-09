@@ -110,7 +110,7 @@ include 'dbcon.php';
 </style>
 </head>
 <body>
-<form name='#' action='#' method='post'>
+<form name='addnotification' action='add_notification.php' method='post'>
 	<div class="popup" id="popup-1">
   <div class="overlay"></div>
   <div class="content">
@@ -120,7 +120,7 @@ include 'dbcon.php';
     
     <h3>Notification Name : <input type="text" name="notification" required></h3>
         <br><br><br>
-        <h3>Context: <textarea name="comment" rows="5" cols="40" required></textarea></h3>
+        <h3>Context: <textarea name="context" rows="5" cols="40" required></textarea></h3>
         <br><br><br>
         <h3>Select an attachment: <input type="file" name="myfile"></h3><br><br>
         <input type="submit" name="submit" value="submit">
@@ -141,6 +141,36 @@ include 'dbcon.php';
 </script>
 
 <h1 style="margin-left:200px; margin-top:20px;" >NOTIFICATION</h1>
+
+<table border="7" cellpadding="15" style="width:70%" class="center">
+	<tr>
+		<th>Sr.No</th>
+		<th>Notification Name</th>
+    <th>Context</th>
+		<th>Status</th>
+		<th>Action</th>
+	</tr>
+  <?php 
+$query="select * from notification";
+
+if ($result = mysqli_query($conn, $query)) {
+  $count=1;
+  while ($row = mysqli_fetch_row($result)) {
+    
+    ?>
+<tr>
+		<td style="text-align: center;"><?php echo $count;?></td>
+		<td style="text-align: center;"><?php echo $row[1];?></td>
+		<td style="text-align: center;"><?php echo $row[2];?></td>
+		<td style="text-align: center;"><?php echo $row[3];?></td>
+		<td style="text-align: center;"><a href="noti_delete.php?id='<?php echo $row[0];?>'"><i class="fa fa-trash"></i></a>/Edit</td>
+	</tr>
+  <?php
+    $count= $count+1;
+  }
+  
+}
+?>
 
 
 

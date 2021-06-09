@@ -1,12 +1,12 @@
 <?php
 include 'dbcon.php';
 
-$name = $_POST["notification"];
-$context = $_POST["comment"];
+$notification = $_POST["notification"];
+$context = $_POST["context"];
 
 // echo $uname;
 // $pass = $_POST["pass"];
-$query = "insert into notification (name , context) values ('$name', '$context')";
+$query = "insert into notification (notification , context , status, action) values ('$notification', '$context' , 'OK', 'active')";
 // echo $query;
 // die();
 mysqli_query($conn,$query);

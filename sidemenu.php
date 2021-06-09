@@ -28,10 +28,7 @@
                   <li><a href="faculty.php">Faculty Registration</a></li>
                   <li><a href="timetable.php">Time Table</a></li>
                   <li><a href="notification.php">Notification</a></li>
-                  <li><a href="#">Examination</a></li>
-                  <li><a href="#">Assesment</a></li>
-                  <li><a href="#">Attendence</a></li>
-                  <li><a href="#">Report</a></li>
+                  
 
                   <li><a href="index.html">Logout</a></li>
               </ul> 
